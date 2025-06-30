@@ -1,0 +1,439 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode - Premium design */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 262 83% 58%;
+    --radius: 0.75rem;
+
+    /* Bloom specific colors - Light */
+    --bloom-primary: 262 83% 58%;
+    --bloom-secondary: 142 76% 36%;
+    --bloom-accent: 45 93% 47%;
+    --bloom-soft: 262 20% 97%;
+    --bloom-mint: 142 30% 95%;
+    --bloom-peach: 45 50% 95%;
+    --bloom-gradient-start: 262 83% 58%;
+    --bloom-gradient-end: 142 76% 36%;
+
+    /* Glass morphism */
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .dark {
+    /* Dark mode - Premium design */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 262 83% 68%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 262 83% 68%;
+
+    /* Bloom specific dark colors */
+    --bloom-primary: 262 83% 68%;
+    --bloom-secondary: 142 76% 46%;
+    --bloom-accent: 45 93% 57%;
+    --bloom-soft: 217.2 32.6% 12%;
+    --bloom-mint: 217.2 32.6% 12%;
+    --bloom-peach: 217.2 32.6% 12%;
+    --bloom-gradient-start: 262 83% 68%;
+    --bloom-gradient-end: 142 76% 46%;
+
+    /* Glass morphism dark */
+    --glass-bg: rgba(0, 0, 0, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--bloom-soft)) 100%);
+    min-height: 100vh;
+  }
+}
+
+/* Glass morphism effects */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 20px;
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--bloom-gradient-start)), hsl(var(--bloom-gradient-end)));
+}
+
+.gradient-mesh {
+  background: radial-gradient(at 40% 20%, hsl(var(--bloom-primary)) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsl(var(--bloom-secondary)) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsl(var(--bloom-accent)) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsl(var(--bloom-primary)) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsl(var(--bloom-secondary)) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsl(var(--bloom-accent)) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsl(var(--bloom-primary)) 0px, transparent 50%);
+  filter: blur(100px) saturate(150%);
+  opacity: 0.15;
+}
+
+/* Chat bubbles with proper contrast - FIXED */
+.chat-bubble-user {
+  background: linear-gradient(135deg, hsl(var(--bloom-primary)), hsl(var(--bloom-secondary)));
+  color: white !important;
+  border-radius: 24px 24px 8px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chat-bubble-ai {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground)) !important;
+  border-radius: 24px 24px 24px 8px;
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.dark .chat-bubble-ai {
+  background: hsl(217.2 32.6% 25%) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border));
+}
+
+.dark .chat-bubble-user {
+  color: white !important;
+}
+
+/* Ensure text is always visible */
+.chat-bubble-user p,
+.chat-bubble-ai p {
+  color: inherit !important;
+}
+
+.dark .chat-bubble-ai p {
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Floating animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(108, 99, 255, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Particle effects */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: hsl(var(--bloom-primary));
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particle-float 8s infinite ease-in-out;
+}
+
+@keyframes particle-float {
+  0%,
+  100% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Voice wave animation */
+.voice-wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.voice-bar {
+  width: 3px;
+  background: hsl(var(--bloom-primary));
+  border-radius: 2px;
+  animation: voice-wave 1.5s ease-in-out infinite;
+}
+
+.voice-bar:nth-child(1) {
+  height: 10px;
+  animation-delay: 0s;
+}
+.voice-bar:nth-child(2) {
+  height: 20px;
+  animation-delay: 0.1s;
+}
+.voice-bar:nth-child(3) {
+  height: 15px;
+  animation-delay: 0.2s;
+}
+.voice-bar:nth-child(4) {
+  height: 25px;
+  animation-delay: 0.3s;
+}
+.voice-bar:nth-child(5) {
+  height: 12px;
+  animation-delay: 0.4s;
+}
+
+@keyframes voice-wave {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2);
+  }
+}
+
+/* Breathing circle */
+.breathing-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, hsl(var(--bloom-primary)), hsl(var(--bloom-secondary)));
+  position: relative;
+  overflow: hidden;
+}
+
+.breathing-circle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  background: hsl(var(--background));
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Mood selector enhanced */
+.mood-button {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mood-button:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mood-button.selected {
+  transform: scale(1.2);
+  box-shadow: 0 0 30px rgba(108, 99, 255, 0.5);
+}
+
+.mood-button::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, hsl(var(--bloom-primary)), hsl(var(--bloom-secondary)));
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mood-button.selected::after {
+  opacity: 1;
+}
+
+/* Progress bars */
+.progress-bar {
+  background: linear-gradient(90deg, hsl(var(--bloom-primary)), hsl(var(--bloom-secondary)));
+  height: 8px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* Notification styles */
+.notification-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.notification-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s ease-out;
+}
+
+.notification-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification-exit-active {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
+
+/* Scroll animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading states */
+.skeleton {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--accent)) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Interactive elements */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .interactive-hover:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Persona voice indicators */
+.voice-asha {
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+}
+
+.voice-kai {
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+}
+
+.voice-mira {
+  background: linear-gradient(135deg, #d299c2, #fef9d7);
+}
