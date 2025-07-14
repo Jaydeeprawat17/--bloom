@@ -45,7 +45,7 @@ Bloom is a comprehensive mental health companion app designed to provide gentle,
 ### Frontend
 - **Next.js 14**: React framework with App Router
 - **TypeScript**: Type-safe development
-- **Tailwind CSS**: Utility-first styling with custom design system
+- **Tailwind CSS**: Utility-first styling with a custom design system
 - **Framer Motion**: Smooth animations and transitions
 - **Lucide React**: Beautiful, consistent icons
 
@@ -97,7 +97,7 @@ Bloom is a comprehensive mental health companion app designed to provide gentle,
 - npm or yarn package manager
 
 ### Local Development
-\`\`\`bash
+```bash
 # Clone the repository
 git clone <repository-url>
 cd bloom-mental-health-app
@@ -109,16 +109,16 @@ npm install
 npm run dev
 
 # Open browser to http://localhost:3000
-\`\`\`
+```
 
 ### Build for Production
-\`\`\`bash
+```bash
 # Create optimized build
 npm run build
 
 # Start production server
 npm start
-\`\`\`
+```
 
 ## 🎯 Key Features Explained
 
